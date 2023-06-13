@@ -14,7 +14,7 @@ class BookList extends StatelessWidget {
     return MaterialApp(
       title: 'BookList',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.blue,
       ),
       home: const BottomNavigationWidget(),
     );
