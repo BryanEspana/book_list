@@ -1,3 +1,4 @@
+import 'package:book_list/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,12 +35,14 @@ class BottomNavigationWidget extends StatefulWidget {
 
   class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     int _selectedIndex = 0;
-    static const List<Widget> _sections = [Text("Inicio"), Text("Bibilioteca")];
+    static const List<Widget> _sections = [
+      HomeScreen(),
+      Text("Bibilioteca")];
 
     @override
     Widget build(BuildContext context){
       return Scaffold(
-        appBar:  AppBar( title: Center(child: Text("BookList") ,),),
+        appBar:  AppBar( title: Center(child: Text("BookList")  ,),),
         bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Inicio"),
