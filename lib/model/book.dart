@@ -3,5 +3,7 @@ class Book{
   final String title;
   final String author;
   final String description;
-  const Book(this.id, this.title, this.author, this.description);
+  final String coverUrl;
+
+  const Book(this.id, this.title, this.author, this.description, this.coverUrl );
 }
