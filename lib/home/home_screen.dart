@@ -4,20 +4,20 @@ import '../model/book.dart';
 class HomeScreen extends StatelessWidget{
   const HomeScreen({Key? key}) : super(key: key);
 
-  final List<Book> _books = const[
-    Book(
+  final List<Games> _Games = const[
+    Games(
         1,
-        "Ready Player One",
-        "Ernest Cline.",
-        "La novela cibernetica que ha inspirado la gran producción de Warner Bros, a medio camino entre Avatar y Matrix. Estamos en el año 2044 y, como el resto de la humanidad, Wade Watts  prefiere mil veces el videojuego de OASIS al cada vez más sombrío mundo real. ",
-        "assets/images/readyPlayerOne.jpg"
+        "Red Dead Redemption 2",
+        "Rockstar Games",
+        "Ambientado en el viejo oeste, sumergete en la vida de Arthur Morgan como un forajido.",
+        "assets/images/rdr2.jpg"
     ),
-    Book(
+    Games(
         2,
-        "Ready Player Two",
-        "Ernest Cline",
-        "La secuela deReady Player One, el best seller mundial que Steven Spielberg adaptó al cine. Esta historia trata sobre ti y sobre la influencia que han tenido los videojuegos en tu vida - Trevor Noah",
-        "assets/images/readyPlayerTWo.jpg"
+        "Horizon Forbidden West",
+        "Gerilla Games",
+        "La secuela de Horizon Zero Down, acompaña a Aloy en una nueva aventura atravezando islas con nuevos personajes y nuevas criaturas",
+        "assets/images/horizon2.jpg"
     )
   ];
 
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget{
     return Container(
       margin: const EdgeInsets.all(16),
       child: ListView.builder(
-          itemCount: _books.length +2,
+          itemCount: _Games.length +2,
           itemBuilder: (context, index){
             if(index == 0){
               return const HeaderWidget();
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget{
             if(index == 1){
               return const ListItemHeader();
             }
-        return ListItemBook(_books[index -2]);
+        return ListItemGames(_Games[index -2]);
       }),
     );
   }
@@ -48,7 +48,7 @@ class HeaderWidget extends StatelessWidget{
   Widget build(BuildContext context) {
     return ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Image.asset("assets/images/libros.png"));
+        child: Image.asset("assets/images/fondo.jpg"));
   }
   
 }
@@ -61,15 +61,15 @@ class ListItemHeader extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.only(top: 20, bottom: 10, left: 5 ),
-        child: const Text("Ultimos libros", style: TextStyle(fontSize: 20),));
+        child: const Text("Ultimos Juegos", style: TextStyle(fontSize: 20),));
   }
 
 }
 
-class ListItemBook extends StatelessWidget{
+class ListItemGames extends StatelessWidget{
 
-  final Book _book;
-  const ListItemBook(this._book, {Key? key}) : super(key: key);
+  final Games _Games;
+  const ListItemGames(this._Games, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class ListItemBook extends StatelessWidget{
         child: InkWell(
           borderRadius: BorderRadius.circular(4),
           onTap: (){
-            _openBookDetails(context, _book);
+            _openGamesDetails(context, _Games);
           },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -87,25 +87,25 @@ class ListItemBook extends StatelessWidget{
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10),
-                  child: Image.asset(_book.coverUrl),
+                  child: Image.asset(_Games.coverUrl),
                 ),
                 Flexible(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                    Text(_book.title,
+                    Text(_Games.title,
                       style: Theme.of(context)
                           .textTheme
                           .headline6!
                           .copyWith(fontSize: 18),
                     ),
                     const SizedBox(height: 5,),
-                    Text(_book.author,
+                    Text(_Games.author,
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2!),
                        const SizedBox(height: 15,),
-                      Text(_book.description, maxLines: 4,
+                      Text(_Games.description, maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyText2
                         ,),
@@ -119,7 +119,7 @@ class ListItemBook extends StatelessWidget{
     );
   }
 
-  void _openBookDetails(BuildContext context, Book book) {
+  void _openGamesDetails(BuildContext context, Games games) {
     // TODO navega a la pantalla del libro
   }
 
